@@ -15,15 +15,15 @@ The aeriOS EAT functions template details the two layers of an [OpenFaaS functio
 
 ### Available Function Templates
 These templates (all are Python-based) are included inside the [template folder](./template/), where each function template is stored inside its own folder. The available templates are the following:
-- [aeros-common-deployment](./template/aeros-common-deployment/): Debian + Flask/Waitress, with templating enabled (`template_folder='/home/app/function/embedded_files'`) and `/output` route.
-- [aeros-local](./template/aeros-local): Debian + Flask/Waitress, with templating enabled (`template_folder='/home/app/function/embedded_files'`) and `/output` route.
-- [aeros-python3-debian](./template/aeros-python3-debian): Debian-based Python image + watchdog, stdin-style function (no Flask). Reads request from stdin and prints response. Exposes port 8080 and uses python3 index.py as fprocess. Adds PyTorch 2.3.1 install in Dockerfile. 
-- [aeros-python3-debian-flask](./template/aeros-python3-debian-flask): HTTP handler with `/` and `/generateHTML` routes; `/generateHTML` returns `handler.getHTML()` and renders `Analysis.html`. Includes metric reporting helpers and Grafana dashboard JSON.
-- [aeros-python3-debian-host](./template/aeros-python3-debian-host): Debian + Flask/Waitress, HTTP handler with `/` and `/output` routes; uses `template_folder='/home/app/function/embedded_files'` to render HTML via `handler.getOutputName()`. Includes embedded Grafana dashboard JSON.
-- [aeros-python3-flask](./template/aeros-python3-flask): Alpine + Flask/Waitress, basic HTTP handler with `/` route only. Standard function skeleton + dashboard JSON + tox config.
-- [aeros-python3-flask-host](./template/aeros-python3-flask-host): Alpine + Flask/Waitress, such as *aeros-python3-flask* but adds `/generateHTML` route returning `handler.getHTML()`. No embedded template folder.
-- [aeros-python3-flask-pytorch-build](./template/aeros-python3-flask-pytorch-build): Alpine + Flask/Waitress, adds PyTorch 1.4.0 install in Dockerfile. Otherwise same structure as *aeros-python3-flask*.
-- [aeros-python3-flask-scikit-learn-build](./template/aeros-python3-flask-scikit-learn-build): Alpine + Flask/Waitress, adds build tools for scikit-learn in Dockerfile. Otherwise same structure as *aeros-python3-flask*.
+- [aerios-common-deployment](./template/aerios-common-deployment/): Debian + Flask/Waitress, with templating enabled (`template_folder='/home/app/function/embedded_files'`) and `/output` route.
+- [aerios-local](./template/aerios-local): Debian + Flask/Waitress, with templating enabled (`template_folder='/home/app/function/embedded_files'`) and `/output` route.
+- [aerios-python3-debian](./template/aerios-python3-debian): Debian-based Python image + watchdog, stdin-style function (no Flask). Reads request from stdin and prints response. Exposes port 8080 and uses python3 index.py as fprocess. Adds PyTorch 2.3.1 install in Dockerfile. 
+- [aerios-python3-debian-flask](./template/aerios-python3-debian-flask): HTTP handler with `/` and `/generateHTML` routes; `/generateHTML` returns `handler.getHTML()` and renders `Analysis.html`. Includes metric reporting helpers and Grafana dashboard JSON.
+- [aerios-python3-debian-host](./template/aerios-python3-debian-host): Debian + Flask/Waitress, HTTP handler with `/` and `/output` routes; uses `template_folder='/home/app/function/embedded_files'` to render HTML via `handler.getOutputName()`. Includes embedded Grafana dashboard JSON.
+- [aerios-python3-flask](./template/aerios-python3-flask): Alpine + Flask/Waitress, basic HTTP handler with `/` route only. Standard function skeleton + dashboard JSON + tox config.
+- [aerios-python3-flask-host](./template/aerios-python3-flask-host): Alpine + Flask/Waitress, such as *aerios-python3-flask* but adds `/generateHTML` route returning `handler.getHTML()`. No embedded template folder.
+- [aerios-python3-flask-pytorch-build](./template/aerios-python3-flask-pytorch-build): Alpine + Flask/Waitress, adds PyTorch 1.4.0 install in Dockerfile. Otherwise same structure as *aerios-python3-flask*.
+- [aerios-python3-flask-scikit-learn-build](./template/aerios-python3-flask-scikit-learn-build): Alpine + Flask/Waitress, adds build tools for scikit-learn in Dockerfile. Otherwise same structure as *aerios-python3-flask*.
 
 The *host* templates are the ones that expose extra HTTP endpoints for serving HTML/UI output rather than just returning the handler's raw result.
 
@@ -66,13 +66,13 @@ The *--lang* parameter specifies our aeriOS template.
 The *--prefix* parameter specifies an image registry to push and pull the image from.
 
 ```sh
-faas-cli new example-function --lang aeros-python3-flask --prefix docker.io/eclipseaerios
+faas-cli new example-function --lang aerios-python3-flask --prefix docker.io/eclipseaerios
 ```
 
 However if you wish to use *scikit-learn* libraries a unique template is required as shown here:
 
 ```sh
-faas-cli new example-function --lang aeros-python3-flask-scikit-learn-build --prefix your-registry.org
+faas-cli new example-function --lang aerios-python3-flask-scikit-learn-build --prefix your-registry.org
 ```
 
 ### Use functions from a private container registry
@@ -85,7 +85,7 @@ provider:
   gateway: http://127.0.0.1:8080
 functions:
   stratified-sampling:
-    lang: aeros-python3-flask
+    lang: aerios-python3-flask
     handler: ./stratified-sampling
     image: my-private-registry.org/eat-stratified-sampling:latest
     secrets:

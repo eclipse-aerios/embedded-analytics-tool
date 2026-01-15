@@ -1,2 +1,2 @@
-language: aeros-local
+language: aerios-local
 fprocess: python3 index.py

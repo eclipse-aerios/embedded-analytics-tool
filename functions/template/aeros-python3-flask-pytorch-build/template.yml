@@ -1,2 +1,0 @@
-language: aeros-python3-flask-pytorch-build
-fprocess: python index.py

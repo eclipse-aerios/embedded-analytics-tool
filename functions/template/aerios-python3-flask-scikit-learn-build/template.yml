@@ -1,0 +1,2 @@
+language: aerios-python3-flask-scikit-learn-build
+fprocess: python index.py

@@ -1,0 +1,2 @@
+language: aerios-common-deployments
+fprocess: python3 index.py

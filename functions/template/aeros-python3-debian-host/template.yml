@@ -1,2 +1,0 @@
-language: aeros-python3-debian-flask
-fprocess: python3 index.py
