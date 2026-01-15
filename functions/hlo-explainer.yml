@@ -1,0 +1,16 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  hlo-explainer:
+    lang: aerios-python3-debian
+    handler: ./hlo-explainer
+    image: eclipseaerios/eat-hlo-explainer:latest
+    environment:
+      write_timeout: 10m2s
+      read_timeout: 10m2s
+      exec_timeout: 10m
+      handler_wait_duration: 9m50s
+      healthcheck_interval: 5s
+      MAX_JSON_SIZE: '10mb'

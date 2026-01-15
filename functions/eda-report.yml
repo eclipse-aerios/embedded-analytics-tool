@@ -1,0 +1,16 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://10.0.0.238:31112
+functions:
+  eda-report:
+    lang: aerios-common-deployment
+    handler: ./eda-report
+    image: eclipseaerios/eda-report:latest
+    environment:
+      write_timeout: 10m2s
+      read_timeout: 10m2s
+      exec_timeout: 10m5s
+      handler_wait_duration: 10m
+      healthcheck_interval: 5s
+      MAX_JSON_SIZE: '10mb'

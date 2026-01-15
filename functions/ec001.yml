@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://10.0.0.186:31112
+functions:
+  ec001:
+    lang: aerios-python3-flask
+    handler: ./ec001
+    image: eclipseaerios/ec001:latest

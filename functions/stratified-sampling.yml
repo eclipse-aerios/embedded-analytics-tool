@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  stratified-sampling:
+    lang: aerios-python3-flask
+    handler: ./stratified-sampling
+    image: eclipseaerios/eat-stratified-sampling:latest 

@@ -1,0 +1,5 @@
+prometheus-client
+requests
+
+filterpy==1.4.5
+numpy==2.0.1

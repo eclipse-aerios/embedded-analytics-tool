@@ -4,7 +4,7 @@
 
 <img src="../docs/figures/function_structure.drawio.svg" alt="Function Structure" height="480"/>
 
-The aeriOS EAT functions template details the two layers of an [OpenFaaS function template](https://docs.openfaas.com/cli/templates/) for the Python language:
+The aeriOS EAT functions template details the two layers of an [OpenFaaS function template](https://docs.openfaas.com/cli/templates/) for the [Python language](https://docs.openfaas.com/languages/python/):
 
 1. The first layer contains information specific to how the function interacts with EAT. This includes the image build file (*Dockerfile*), what libraries Docker needs to compile the function image (*requirements*) and the wrapper used to interface with the function (*index*).
 2. The second layer contains information specific to the function operation: 
@@ -47,8 +47,6 @@ Interfaces between EAT and other aeriOS components can be viewed on two levels:
 
 Both interfaces are available to users, however the execution of a function will always require a HTTP request to trigger, and also a response to signify the execution has concluded.
 
-<!-- The installation of EAT comes with three prepackaged functions, these functions provide generalised stratified sampling, anomaly detection and data drift detection based on Data Fabric models. These functions may require minor edits on an ad hoc basis, depending on the complexity of data models being used.   -->
-
 ### faas-cli Application
 The *faas-cli* application is required to create, build and deploy functions from CLI.
 The [get-fass-cli.sh script](./get-faas-cli.sh) will download *faas-cli* version 0.16.7 which has been used throughout EAT development.
@@ -61,9 +59,10 @@ chmod +x get-faas-cli.sh
 
 ### Function Creation
 To create an aeriOS function for the Embedded Analytics Tool, you must create it from the aeriOS function template.
-The following function uses the faas-cli application to create a new function called *stratified-sampling*.
-The *--lang* parameter specifies our aeriOS template.
-The *--prefix* parameter specifies an image registry to push and pull the image from.
+The following function uses the faas-cli application to create a new function called *stratified-sampling*:
+
+- The *--lang* parameter specifies our aeriOS template.
+- The *--prefix* parameter specifies an image registry to push and pull the image from.
 
 ```sh
 faas-cli new example-function --lang aerios-python3-flask --prefix docker.io/eclipseaerios

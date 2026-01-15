@@ -1,0 +1,17 @@
+{
+    "onos_username": "onos",
+    "onos_password": "rocks",
+    "controller_ip": "10.220.2.181",
+    "controller_port": "8181",
+    "deviceId": "of:0000ea4ae1de9a43",
+    "priority": "1000",
+    "lldp_to_controller": "True",
+    "timeout": "0",
+    "src_ip": "10.220.2.55",
+    "src_mac": "01:23:45:67:89:10",
+    "dst_ip": "10.220.2.56",
+    "dst_mac": "10:23:45:67:89:01",
+    "port_out": "1",
+    "mod_dst_ip": "10.220.2.57",
+    "mod_dst_mac": "10:23:45:67:89:aa"
+}

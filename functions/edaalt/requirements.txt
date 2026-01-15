@@ -1,0 +1,7 @@
+prometheus-client
+requests
+
+pandas
+ydata-profiling
+openpyxl
+gdown
