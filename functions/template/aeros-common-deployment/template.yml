@@ -1,0 +1,2 @@
+language: aeros-common-deployments
+fprocess: python3 index.py
