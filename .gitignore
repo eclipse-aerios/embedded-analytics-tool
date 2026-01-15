@@ -1,0 +1,5 @@
+# Packaged Helm charts
+alertmanager-*.tgz
+grafana-*.tgz
+prometheus-*.tgz
+helm-charts/openfaas/

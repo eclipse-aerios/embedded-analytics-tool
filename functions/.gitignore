@@ -1,0 +1,7 @@
+build
+.secrets
+example-function.yml
+example-function
+# template
+build
+.secrets
