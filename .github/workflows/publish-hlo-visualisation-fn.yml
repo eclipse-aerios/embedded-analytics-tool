@@ -1,0 +1,47 @@
+name: Build and push aeriOS EAT's hlo-visualisation function container image to Docker Hub
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: ['functions/hlo-visualisation/**']
+  pull_request:
+    branches: [ "main" ]
+    paths: ['functions/hlo-visualisation/**']
+  workflow_dispatch: {}  # allows manual trigger
+
+env:
+  IMAGE_NAME: eclipseaerios/eat-hlo-visualisation
+  VERSION: 1.0.0
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: functions
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install custom faas-cli
+      shell: bash
+      run: |
+        set -euo pipefail
+        chmod +x ./get-faas-cli.sh
+        ./get-faas-cli.sh
+        faas-cli version
+    
+    - name: Login to Docker Hub
+      if: ${{ github.event_name != 'pull_request' }}
+      uses: docker/login-action@v3
+      with:
+        registry: docker.io
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: Publish function image to Docker Hub
+      shell: bash
+      run: |
+        set -euo pipefail
+        faas-cli publish -f hlo-visualisation.yml

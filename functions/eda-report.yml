@@ -6,7 +6,7 @@ functions:
   eda-report:
     lang: aerios-common-deployment
     handler: ./eda-report
-    image: eclipseaerios/eda-report:latest
+    image: eclipseaerios/eat-eda-report:latest
     environment:
       write_timeout: 10m2s
       read_timeout: 10m2s

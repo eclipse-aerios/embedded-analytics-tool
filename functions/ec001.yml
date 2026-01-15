@@ -1,7 +1,7 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://10.0.0.186:31112
+  gateway: http://127.0.0.1:8080
 functions:
   ec001:
     lang: aerios-python3-flask
